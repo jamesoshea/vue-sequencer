@@ -12,7 +12,7 @@
           v-text="instrument.name"
         />
         <div
-          class="instrument-block"
+          class="instrument-beat"
           v-for="(note, j) in instrument.notes"
           :key="note.beat"
           :class="{ [j]: true }"
@@ -21,10 +21,22 @@
         </div>
       </div>
     </div>
+    <div>
+      <button @click="play">
+        PLAY
+      </button>
+      <button @click="stop">
+        STOP
+      </button>
+    </div>
+    <audio data-sound="kick" src="../../Kick.wav"></audio>
+    <audio data-sound="snare" src="../../Snare.wav"></audio>
   </div>
 </template>
 
 <script>
+let player; 
+
 export default {
   name: "HelloWorld",
   data() {
@@ -36,7 +48,30 @@ export default {
         { name: 'crash', notes: noteGrid() },
       ],
       tempo: 120,
-      kit: 1
+      kit: 1,
+      beat: 1,
+      player: null
+    }
+  },
+  methods: {
+    play() {
+      this.beat = 1
+      this.player = setInterval(() => {
+        if (this.beat === 5) this.beat = 1
+        this.instruments.forEach((instrument) => {
+          if (!instrument.notes[this.beat - 1].value) {
+            return;
+          }
+          document.querySelector(`[data-sound="${instrument.name}"]`).pause()
+          document.querySelector(`[data-sound="${instrument.name}"]`).currentTime = 0
+          document.querySelector(`[data-sound="${instrument.name}"]`).play()
+        })
+        this.beat += 1
+      }, 60000 / this.tempo)
+    },
+    stop() {
+      this.beat = 1
+      clearInterval(this.player)
     }
   }
 };
@@ -66,11 +101,12 @@ function noteGrid() {
 }
 
 .instrument-title {
-  
+  width: 30%;
+  text-align: center;
 }
 
-.instrument-block {
-
+.instrument-beat {
+  width: 15%;
 }
 
 </style>
