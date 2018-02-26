@@ -22,10 +22,10 @@
       </div>
     </div>
     <div>
-      <button @click="play">
+      <button @click.prevent="play">
         PLAY
       </button>
-      <button @click="stop">
+      <button @click.prevent="stop">
         STOP
       </button>
       <input type="range" min="40" max="200" step="1" v-model="tempo">
@@ -38,9 +38,7 @@
     <ul style="text-align:left;">
       <li>add spacebar support</li>
       <li>add samples for crash and hats</li>
-      <li>add tempo slider</li>
       <li>fix highlighting for current beat</li>
-      <li>16th notes</li>
       <li>styling</li>
     </ul>
   </div>
@@ -68,7 +66,10 @@ export default {
   },
   methods: {
     play() {
-      this.isPlaying = true;
+      if (this.isPlaying) {
+        return;
+      }
+      this.isPlaying = true
       this.beat = 1
       this.player = setInterval(() => {
         if (this.beat === 17) this.beat = 1
@@ -84,6 +85,7 @@ export default {
       }, 60000 / (this.tempo * 4))
     },
     stop() {
+      this.isPlaying = false
       this.beat = 1
       clearInterval(this.player)
       document.querySelectorAll('audio').forEach(instrument => {
@@ -94,6 +96,19 @@ export default {
     isCurrentBeat(beat) {
       return this.beat === beat
     }
+  },
+  mounted() {
+    document.addEventListener('keydown', event => {
+      if(!(event.keyCode === 32)) {
+        return
+      }
+      if (!this.isPlaying) {
+        console.log('wow')
+        this.play()
+      } else {
+        this.stop()
+      }
+    })
   }
 };
 
