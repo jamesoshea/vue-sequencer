@@ -31,15 +31,14 @@
       <input type="range" min="40" max="200" step="1" v-model="tempo">
       Tempo: {{tempo}}
     </div>
-    <p>{{beat}}</p>
     <audio data-sound="kick" src="../../Kick.wav"></audio>
     <audio data-sound="snare" src="../../Snare.wav"></audio>
     <audio data-sound="hats" src="../../Hats.wav"></audio>
     <audio data-sound="openHats" src="../../OpenHats.wav"></audio>
     <audio data-sound="crash" src="../../Crash.wav"></audio>
     <ul style="text-align:left;">
-      <li>add samples for crash and hats</li>
       <li>styling</li>
+      <li>individual and master gain KNOBS</li>
     </ul>
   </div>
 </template>
@@ -77,7 +76,6 @@ export default {
           if (!instrument.notes[this.beat].value) {
             return;
           }
-          console.log(this.beat)
           document.querySelector(`[data-sound="${instrument.name}"]`).pause()
           document.querySelector(`[data-sound="${instrument.name}"]`).currentTime = 0
           document.querySelector(`[data-sound="${instrument.name}"]`).play()
