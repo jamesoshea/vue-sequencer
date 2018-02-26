@@ -28,6 +28,8 @@
       <button @click="stop">
         STOP
       </button>
+      <input type="range" min="40" max="200" step="1" v-model="tempo">
+      Tempo: {{tempo}}
     </div>
     <audio data-sound="kick" src="../../Kick.wav"></audio>
     <audio data-sound="snare" src="../../Snare.wav"></audio>
