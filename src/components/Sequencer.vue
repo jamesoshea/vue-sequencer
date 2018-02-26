@@ -15,7 +15,7 @@
           class="instrument-beat"
           v-for="(note, j) in instrument.notes"
           :key="note.beat"
-          :class="{ [j]: true, currentBeat: isCurrentBeat(note.beat) }"
+          :class="{ [j]: true, currentBeat: isCurrentBeat(j) }"
         >
           <input type="checkbox" v-model="instruments[i].notes[j].value">
         </div>
@@ -31,6 +31,7 @@
       <input type="range" min="40" max="200" step="1" v-model="tempo">
       Tempo: {{tempo}}
     </div>
+    <p>{{beat}}</p>
     <audio data-sound="kick" src="../../Kick.wav"></audio>
     <audio data-sound="snare" src="../../Snare.wav"></audio>
     <audio data-sound="hats" src="../../Hats.wav"></audio>
@@ -45,8 +46,6 @@
 </template>
 
 <script>
-let player; 
-
 export default {
   name: "Sequencer",
   data() {
@@ -58,8 +57,7 @@ export default {
         { name: 'crash', notes: noteGrid() },
       ],
       tempo: 120,
-      kit: 1,
-      beat: 1,
+      beat: 15,
       player: null,
       isPlaying: false,
     }
@@ -70,23 +68,25 @@ export default {
         return;
       }
       this.isPlaying = true
-      this.beat = 1
       this.player = setInterval(() => {
-        if (this.beat === 17) this.beat = 1
+        this.beat += 1
+        if (this.beat === 16) {
+          this.beat = 0
+        }
         this.instruments.forEach((instrument) => {
-          if (!instrument.notes[this.beat - 1].value) {
+          if (!instrument.notes[this.beat].value) {
             return;
           }
+          console.log(this.beat)
           document.querySelector(`[data-sound="${instrument.name}"]`).pause()
           document.querySelector(`[data-sound="${instrument.name}"]`).currentTime = 0
           document.querySelector(`[data-sound="${instrument.name}"]`).play()
         })
-        this.beat += 1
       }, 60000 / (this.tempo * 4))
     },
     stop() {
       this.isPlaying = false
-      this.beat = 1
+      this.beat = 15
       clearInterval(this.player)
       document.querySelectorAll('audio').forEach(instrument => {
         instrument.pause()
@@ -94,7 +94,7 @@ export default {
       })
     },
     isCurrentBeat(beat) {
-      return this.beat === beat
+      return this.isPlaying && this.beat === beat 
     }
   },
   mounted() {
@@ -103,7 +103,6 @@ export default {
         return
       }
       if (!this.isPlaying) {
-        console.log('wow')
         this.play()
       } else {
         this.stop()
@@ -114,6 +113,7 @@ export default {
 
 function noteGrid() {
   return [
+    {beat: 0, value: false},
     {beat: 1, value: false},
     {beat: 2, value: false},
     {beat: 3, value: false},
@@ -128,13 +128,11 @@ function noteGrid() {
     {beat: 12, value: false},
     {beat: 13, value: false},
     {beat: 14, value: false},
-    {beat: 15, value: false},
-    {beat: 16, value: false}
+    {beat: 15, value: false}
   ]
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 .container {
