@@ -22,10 +22,10 @@
       </div>
     </div>
     <div>
-      <button @click.prevent="play">
+      <button @click="play">
         PLAY
       </button>
-      <button @click.prevent="stop">
+      <button @click="stop">
         STOP
       </button>
       <input type="range" min="40" max="200" step="1" v-model="tempo">
@@ -35,11 +35,10 @@
     <audio data-sound="kick" src="../../Kick.wav"></audio>
     <audio data-sound="snare" src="../../Snare.wav"></audio>
     <audio data-sound="hats" src="../../Hats.wav"></audio>
+    <audio data-sound="openHats" src="../../OpenHats.wav"></audio>
     <audio data-sound="crash" src="../../Crash.wav"></audio>
     <ul style="text-align:left;">
-      <li>add spacebar support</li>
       <li>add samples for crash and hats</li>
-      <li>fix highlighting for current beat</li>
       <li>styling</li>
     </ul>
   </div>
@@ -54,6 +53,7 @@ export default {
         { name: 'kick', notes: noteGrid() },
         { name: 'snare', notes: noteGrid() },
         { name: 'hats', notes: noteGrid() },
+        { name: 'openHats', notes: noteGrid() },
         { name: 'crash', notes: noteGrid() },
       ],
       tempo: 120,
@@ -102,6 +102,7 @@ export default {
       if(!(event.keyCode === 32)) {
         return
       }
+      event.preventDefault()
       if (!this.isPlaying) {
         this.play()
       } else {
