@@ -1,29 +1,45 @@
 <template>
-  <div class="container">
-    <div class="title-row">
+  <div class="sequencer__container">
+    <div class="sequencer__header">
+      <h1 class="sequencer__title">
+        hello
+      </h1>
+      <h1 class="sequencer__message">
+        i am sequencer
+      </h1>
+    </div>
+    <Instrument
+      v-for="instrument in instruments"
+      :beat="beat"
+      :isPlaying="isPlaying"
+      :key="instrument.name"
+      :name="instrument.name"
+      :src="instrument.src"
+      :volume="instrument.volume"
+      :notes="instrument.notes"
+    />
+    <div>
       <p>
-        wow i am a sequencer
+        <button @click="play">
+          PLAY
+        </button>
+        <button @click="stop">
+          STOP
+        </button>
       </p>
     </div>
-      <Instrument
-        v-for="instrument in instruments"
-        :beat="beat"
-        :isPlaying="isPlaying"
-        :key="instrument.name"
-        :name="instrument.name"
-        :src="instrument.src"
-        :volume="instrument.volume"
-        :notes="instrument.notes"
-      />
     <div>
-      <button @click="play">
-        PLAY
-      </button>
-      <button @click="stop">
-        STOP
-      </button>
-      <input type="range" min="40" max="200" step="1" v-model="tempo">
-      Tempo: {{tempo}}
+      <input
+        class="sequencer__tempo-slider"
+        type="range"
+        min="40"
+        max="200"
+        step="1"
+        v-model="tempo"
+      />
+      <!-- <div>
+        Tempo: {{tempo}}
+      </div> -->
     </div>
   </div>
 </template>
@@ -111,12 +127,37 @@ function noteGrid() {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../assets/main.scss';
 
-.container {
+.sequencer__container {
   width: 80%;
-  height: 200px;
   margin: auto;
+}
+
+.sequencer__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.sequencer__title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 6em;
+  margin: 0;
+}
+
+.sequencer__message {
+  font-family: 'Roboto', sans-serif;
+  color: $spanish-bistre;
+  font-size: 2em;
+  margin: 0;
+  transform: rotate(24deg) translateY(20%);
+}
+
+.sequencer__tempo-slider {
+  position: relative;
+  top: 50%;
 }
 
 </style>

@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:900');
+
+@import './variables.scss';
+
+body {
+  background-color: $lightest-grey;
+  color: $darkest-grey;
+}
+
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-top: 60px;
+}
+
+button {
+  margin-top: 0.5em;
+  border: solid 1px $darkest-grey;
+  border-radius: 2px;
+  background-color: $lightest-grey; 
+}
+
+input[type=range] {
+  position: relative;
+  top:50%;
+  transform: translateY(-62.5%);
+}
+
+input[type=checkbox] {
+  position: relative;
+  top:50%;
+  transform: translateY(-75%);
+}

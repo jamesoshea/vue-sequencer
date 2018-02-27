@@ -1,19 +1,30 @@
 <template>
-  <div class="instrument-row">
+  <div class="instrument__row">
     <div
-      class="instrument-title"
+      class="instrument__title"
       v-text="name"
     />
-    <div class="instrument-volume">
-      <input type="range" min="0" max="1" step="0.1" v-model="localVolume">
+    <div class="instrument__volume">
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.1"
+        v-model="localVolume"
+      />
     </div>
-    <div
-      class="instrument-beat"
-      v-for="(note, i) in notes"
-      :key="note.beat"
-      :class="{ [i]: true, currentBeat: isCurrentBeat(i) }"
-    >
-      <input type="checkbox" v-model="notes[i].value">
+    <div class="instrument__beats">
+      <div
+        v-for="(note, i) in notes"
+        :key="note.beat"
+        :class="{
+          [i]: true,
+          'instrument__beat--current-beat': isCurrentBeat(i),
+          'instrument__beat--downbeat': isDownbeat(i)
+        }"
+      >
+        <input type="checkbox" v-model="notes[i].value">
+      </div>
     </div>
     <audio
       :data-sound="name"
@@ -53,28 +64,46 @@
       isCurrentBeat(beat) {
         return this.isPlaying && this.beat === beat 
       },
-    }
+      isDownbeat(beat) {
+        return beat % 4 === 0 
+      },
+    },
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../assets/variables.scss';
 
-.instrument-row {
+.instrument__row {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
+  border: 1px solid;
 }
 
-.instrument-title {
-  width: 36%;
+.instrument__title {
+  flex-basis: 15%;
   text-align: left;
 }
 
-.instrument-beat {
-  width: 4%;
+.instrument__volume {
+  flex-grow: 1;
+  border-left: 1px solid $darkest-grey;
 }
 
-.currentBeat {
+.instrument__beats {
+  flex-grow: 3;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.instrument__beat--current-beat {
   background-color: mediumseagreen;
+}
+
+.instrument__beat--downbeat {
+  border-left: 1px solid $darkest-grey;
 }
 
 </style>
