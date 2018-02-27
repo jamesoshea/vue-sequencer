@@ -5,22 +5,16 @@
         wow i am a sequencer
       </p>
     </div>
-    <div v-for="(instrument, i) in instruments" :key="instrument.name">
-      <div class="instrument-row">
-        <div
-          class="instrument-title"
-          v-text="instrument.name"
-        />
-        <div
-          class="instrument-beat"
-          v-for="(note, j) in instrument.notes"
-          :key="note.beat"
-          :class="{ [j]: true, currentBeat: isCurrentBeat(j) }"
-        >
-          <input type="checkbox" v-model="instruments[i].notes[j].value">
-        </div>
-      </div>
-    </div>
+      <Instrument
+        v-for="instrument in instruments"
+        :beat="beat"
+        :isPlaying="isPlaying"
+        :key="instrument.name"
+        :name="instrument.name"
+        :src="instrument.src"
+        :volume="instrument.volume"
+        :notes="instrument.notes"
+      />
     <div>
       <button @click="play">
         PLAY
@@ -31,35 +25,31 @@
       <input type="range" min="40" max="200" step="1" v-model="tempo">
       Tempo: {{tempo}}
     </div>
-    <audio data-sound="kick" src="../../Kick.wav"></audio>
-    <audio data-sound="snare" src="../../Snare.wav"></audio>
-    <audio data-sound="hats" src="../../Hats.wav"></audio>
-    <audio data-sound="openHats" src="../../OpenHats.wav"></audio>
-    <audio data-sound="crash" src="../../Crash.wav"></audio>
-    <ul style="text-align:left;">
-      <li>styling</li>
-      <li>individual and master gain KNOBS</li>
-    </ul>
   </div>
 </template>
 
 <script>
+import Instrument from './Instrument.vue'
+
 export default {
   name: "Sequencer",
+  components: {
+    Instrument,
+  },
   data() {
     return {
       instruments: [
-        { name: 'kick', notes: noteGrid() },
-        { name: 'snare', notes: noteGrid() },
-        { name: 'hats', notes: noteGrid() },
-        { name: 'openHats', notes: noteGrid() },
-        { name: 'crash', notes: noteGrid() },
+        { name: 'kick', notes: noteGrid(), volume: 1, src: 'kick.wav' },
+        { name: 'snare', notes: noteGrid(), volume: 1, src: 'snare.wav' },
+        { name: 'hats', notes: noteGrid(), volume: 1, src: 'hats.wav' },
+        { name: 'openHats', notes: noteGrid(), volume: 1, src: 'openHats.wav' },
+        { name: 'crash', notes: noteGrid(), volume: 1, src: 'crash.wav' },
       ],
       tempo: 120,
       beat: 15,
       player: null,
       isPlaying: false,
-    }
+    };
   },
   methods: {
     play() {
@@ -72,14 +62,6 @@ export default {
         if (this.beat === 16) {
           this.beat = 0
         }
-        this.instruments.forEach((instrument) => {
-          if (!instrument.notes[this.beat].value) {
-            return;
-          }
-          document.querySelector(`[data-sound="${instrument.name}"]`).pause()
-          document.querySelector(`[data-sound="${instrument.name}"]`).currentTime = 0
-          document.querySelector(`[data-sound="${instrument.name}"]`).play()
-        })
       }, 60000 / (this.tempo * 4))
     },
     stop() {
@@ -91,9 +73,6 @@ export default {
         instrument.currentTime = 0
       })
     },
-    isCurrentBeat(beat) {
-      return this.isPlaying && this.beat === beat 
-    }
   },
   mounted() {
     document.addEventListener('keydown', event => {
@@ -138,24 +117,6 @@ function noteGrid() {
   width: 80%;
   height: 200px;
   margin: auto;
-}
-
-.instrument-row {
-  display: flex;
-  flex-direction: row;
-}
-
-.instrument-title {
-  width: 30%;
-  text-align: center;
-}
-
-.instrument-beat {
-  width: 15%;
-}
-
-.currentBeat {
-  background-color: mediumseagreen;
 }
 
 </style>
