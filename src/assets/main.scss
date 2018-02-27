@@ -1,16 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:900');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,900');
 
 @import './variables.scss';
 
 body {
+  font-family: 'Roboto', sans-serif;
   background-color: $lightest-grey;
   color: $darkest-grey;
 }
 
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   margin-top: 60px;
 }
 

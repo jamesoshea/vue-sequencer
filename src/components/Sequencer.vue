@@ -149,7 +149,7 @@ function noteGrid() {
 
 .sequencer__message {
   font-family: 'Roboto', sans-serif;
-  color: $spanish-bistre;
+  color: $dark-vanilla;
   font-size: 2em;
   margin: 0;
   transform: rotate(24deg) translateY(20%);

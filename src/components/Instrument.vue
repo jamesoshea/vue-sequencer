@@ -78,7 +78,6 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  border: 1px solid;
 }
 
 .instrument__title {
@@ -88,7 +87,6 @@
 
 .instrument__volume {
   flex-grow: 1;
-  border-left: 1px solid $darkest-grey;
 }
 
 .instrument__beats {
@@ -99,7 +97,7 @@
 }
 
 .instrument__beat--current-beat {
-  background-color: mediumseagreen;
+  background-color: $dark-vanilla;
 }
 
 .instrument__beat--downbeat {
