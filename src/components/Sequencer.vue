@@ -56,11 +56,11 @@ export default {
   data() {
     return {
       instruments: [
-        { name: 'kick', notes: patterns.sambaKicks.notes, volume: 1, src: 'kick.wav' },
-        { name: 'snare', notes: patterns.sambaSnare.notes, volume: 1, src: 'snare.wav' },
-        { name: 'hats', notes: patterns.sambaClosedHats.notes, volume: 1, src: 'hats.wav' },
-        { name: 'openHats', notes: patterns.sambaOpenHats.notes, volume: 1, src: 'openHats.wav' },
-        { name: 'crash', notes: patterns.sambaCrash.notes, volume: 1, src: 'crash.wav' },
+        { name: 'kick', notes: patterns.samba.kick.notes, volume: 1, src: 'kick.wav' },
+        { name: 'snare', notes: patterns.samba.snare.notes, volume: 1, src: 'snare.wav' },
+        { name: 'hats', notes: patterns.samba.closedHats.notes, volume: 1, src: 'hats.wav' },
+        { name: 'openHats', notes: patterns.samba.openHats.notes, volume: 1, src: 'openHats.wav' },
+        { name: 'crash', notes: patterns.samba.crash.notes, volume: 1, src: 'crash.wav' },
       ],
       tempo: 120,
       beat: 15,
