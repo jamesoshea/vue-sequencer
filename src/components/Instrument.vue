@@ -53,6 +53,9 @@
         document.querySelector(`[data-sound="${this.name}"]`).volume = newValue
       },
       beat(newValue) {
+        if (newValue < 0) {
+          return
+        }
         if (this.notes[newValue].value) {
           document.querySelector(`[data-sound="${this.name}"]`).pause()
           document.querySelector(`[data-sound="${this.name}"]`).currentTime = 0

@@ -63,7 +63,7 @@ export default {
         { name: 'crash', notes: patterns.samba.crash.notes, volume: 1, src: 'crash.wav' },
       ],
       tempo: 120,
-      beat: 15,
+      beat: -1,
       player: null,
       isPlaying: false,
     };
@@ -82,18 +82,18 @@ export default {
       }, 60000 / (this.tempo * 4))
     },
     stop() {
-      this.isPlaying = false
-      this.beat = 15
       clearInterval(this.player)
       document.querySelectorAll('audio').forEach(instrument => {
         instrument.pause()
         instrument.currentTime = 0
       })
+      this.isPlaying = false
+      this.beat = -1
     },
   },
   mounted() {
     document.addEventListener('keydown', event => {
-      if(!(event.keyCode === 32)) {
+      if(event.keyCode !== 32) {
         return
       }
       event.preventDefault()
