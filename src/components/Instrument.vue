@@ -6,6 +6,7 @@
     />
     <div class="instrument__volume">
       <input
+        class="instrument__volume-input"
         type="range"
         min="0"
         max="1"
@@ -23,7 +24,11 @@
           'instrument__beat--downbeat': isDownbeat(i)
         }"
       >
-        <input type="checkbox" v-model="notes[i].value">
+        <input
+          type="checkbox"
+          v-model="notes[i].value"
+          :class="isChecked(notes[i].value)"
+        >
       </div>
     </div>
     <audio
@@ -70,6 +75,12 @@
       isDownbeat(beat) {
         return beat % 4 === 0 
       },
+      isChecked(value) {
+        return {
+          'instrument__note': true,
+          'instrument__note--checked': value
+        }
+      },
     },
   }
 </script>
@@ -105,6 +116,41 @@
 
 .instrument__beat--downbeat {
   border-left: 1px solid $darkest-grey;
+}
+
+.instrument__note {
+  &:focus {
+    outline: none;
+  }
+  position: relative;
+  top:50%;
+  transform: translateY(-75%);
+  appearance: none;
+  border: 1px solid $spanish-bistre;
+  height: 1em;
+  width: 1em;
+}
+
+.instrument__note--checked {
+  background-color: $spanish-bistre;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  &:focus {
+    outline: none;
+  }
+  &::-webkit-slider-runnable-track {
+    height: 1em;
+    -webkit-appearance: none;
+    background: $dark-vanilla;
+  }
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 1em;
+    width:1em;
+    background: $spanish-bistre;
+  }
 }
 
 </style>
