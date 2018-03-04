@@ -14,6 +14,7 @@
       :isPlaying="isPlaying"
       :key="instrument.name"
       :name="instrument.name"
+      :showName="instrument.showName"
       :src="instrument.src"
       :volume="instrument.volume"
       :notes="instrument.notes"
@@ -56,11 +57,40 @@ export default {
   data() {
     return {
       instruments: [
-        { name: 'kick', notes: patterns.samba.kick.notes, volume: 1, src: 'kick.wav' },
-        { name: 'snare', notes: patterns.samba.snare.notes, volume: 1, src: 'snare.wav' },
-        { name: 'hats', notes: patterns.samba.closedHats.notes, volume: 1, src: 'hats.wav' },
-        { name: 'openHats', notes: patterns.samba.openHats.notes, volume: 1, src: 'openHats.wav' },
-        { name: 'crash', notes: patterns.samba.crash.notes, volume: 1, src: 'crash.wav' },
+        { 
+          name: 'kick',
+          showName: 'Kick',
+          notes: patterns.samba.kick.notes,
+          volume: 1,
+          src: 'kick.wav'
+        },
+        {
+          name: 'snare',
+          showName: 'Snare',
+          notes: patterns.samba.snare.notes,
+          volume: 1,
+          src: 'snare.wav'
+        },
+        {
+          name: 'hats',
+          showName: 'Hihat',
+          notes: patterns.samba.closedHats.notes,
+          volume: 1,
+          src: 'hats.wav'
+        },
+        {
+          name: 'openHats',
+          showName: 'Open Hihat',
+          notes: patterns.samba.openHats.notes,
+          volume: 1,
+          src: 'openHats.wav'
+        },
+        {
+          name: 'crash',
+          showName: 'Crash',
+          notes: patterns.samba.crash.notes,
+          volume: 1,
+          src: 'crash.wav' },
       ],
       tempo: 120,
       beat: -1,

@@ -2,7 +2,7 @@
   <div class="instrument__row">
     <div
       class="instrument__title"
-      v-text="name"
+      v-text="showName"
     />
     <div class="instrument__volume">
       <input
@@ -45,6 +45,7 @@
       beat: Number,
       src: String,
       name: String,
+      showName: String,
       volume: [String, Number],
       notes: Array,
     },
