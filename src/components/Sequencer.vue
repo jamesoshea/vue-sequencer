@@ -38,6 +38,9 @@
         step="1"
         v-model="tempo"
       />
+      <p>
+        Tempo: 
+      </p>
       <input
         type="number"
         min="40"
@@ -196,6 +199,24 @@ function noteGrid() {
 .sequencer__tempo-slider {
   position: relative;
   top: 50%;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  &:focus {
+    outline: none;
+  }
+  &::-webkit-slider-runnable-track {
+    height: 1em;
+    -webkit-appearance: none;
+    background: $dark-vanilla;
+  }
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 1em;
+    width:1em;
+    background: $spanish-bistre;
+  }
 }
 
 </style>

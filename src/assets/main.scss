@@ -18,9 +18,3 @@ button {
   border-radius: 2px;
   background-color: $lightest-grey; 
 }
-
-input[type=range] {
-  position: relative;
-  top:50%;
-  transform: translateY(-62.5%);
-}

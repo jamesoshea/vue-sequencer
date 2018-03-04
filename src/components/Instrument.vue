@@ -138,6 +138,9 @@
 
 input[type=range] {
   -webkit-appearance: none;
+  position: relative;
+  top:50%;
+  transform: translateY(-62.5%);
   &:focus {
     outline: none;
   }
