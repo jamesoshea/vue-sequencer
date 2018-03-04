@@ -38,6 +38,13 @@
         step="1"
         v-model="tempo"
       />
+      <input
+        type="number"
+        min="40"
+        max="200"
+        step="1"
+        v-model="tempo"
+      >
       <!-- <div>
         Tempo: {{tempo}}
       </div> -->
