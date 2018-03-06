@@ -19,7 +19,17 @@
       :volume="instrument.volume"
       :notes="instrument.notes"
     />
-    <div>
+    <div class="sequencer__tempo-container">
+      <span>How fast?</span>   
+      <input
+        type="number"
+        min="40"
+        max="200"
+        step="1"
+        v-model="tempo"
+      >
+    </div>
+    <div class="sequencer__transport-container">
       <p>
         <button @click="play">
           PLAY
@@ -28,29 +38,6 @@
           STOP
         </button>
       </p>
-    </div>
-    <div>
-      <input
-        class="sequencer__tempo-slider"
-        type="range"
-        min="40"
-        max="200"
-        step="1"
-        v-model="tempo"
-      />
-      <p>
-        Tempo: 
-      </p>
-      <input
-        type="number"
-        min="40"
-        max="200"
-        step="1"
-        v-model="tempo"
-      >
-      <!-- <div>
-        Tempo: {{tempo}}
-      </div> -->
     </div>
   </div>
 </template>
@@ -196,27 +183,26 @@ function noteGrid() {
   transform: rotate(24deg) translateY(20%);
 }
 
-.sequencer__tempo-slider {
-  position: relative;
-  top: 50%;
+.sequencer__tempo-container {
+  text-align: center;
+  margin-top: 1em;
 }
 
-input[type=range] {
-  -webkit-appearance: none;
-  &:focus {
-    outline: none;
-  }
-  &::-webkit-slider-runnable-track {
-    height: 1em;
+.sequencer__transport-container {
+  text-align: center;
+  margin-top: 1em;
+}
+
+input[type=number] {
+  &::-webkit-inner-spin-button {
     -webkit-appearance: none;
-    background: $dark-vanilla;
+    margin: 0;
   }
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 1em;
-    width:1em;
-    background: $spanish-bistre;
-  }
+  border: 1px solid $spanish-bistre;
+  border-radius: 2px;
+  background-color: $lightest-grey;
+  color: $darkest-grey;
+  text-align: center;
 }
 
 </style>
