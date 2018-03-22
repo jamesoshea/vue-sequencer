@@ -44,7 +44,7 @@
         <option 
           v-for="patternStyle in patternStyles"
           :key="patternStyle"
-          :label="patternStyle"
+          :label="patterns[patternStyle].showName"
           :value="patternStyle"
         />
       </select>
@@ -64,7 +64,7 @@ export default {
   data() {
     return {
       patterns,
-      globalPatternStyle: null,
+      globalPatternStyle: 'samba',
       instruments: [
         { 
           name: 'kick',

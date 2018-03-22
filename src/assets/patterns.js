@@ -1,5 +1,6 @@
 const patterns = {
   samba: {
+    showName: 'Samba',
     kick: {
       notes: [
         { beat: 0, value: true },
@@ -102,6 +103,7 @@ const patterns = {
     }
   },
   house: {
+    showName: 'House',
     kick: {
       notes: [
         { beat: 0, value: true },
@@ -204,6 +206,7 @@ const patterns = {
     }
   },
   ukGarage: {
+    showName: 'UK Garage',
     kick: {
       notes: [
         { beat: 0, value: true },
@@ -248,7 +251,7 @@ const patterns = {
       notes: [
         { beat: 0, value: false },
         { beat: 1, value: false },
-        { beat: 2, value: true },
+        { beat: 2, value: false },
         { beat: 3, value: false },
         { beat: 4, value: false },
         { beat: 5, value: false },

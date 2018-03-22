@@ -20,7 +20,7 @@
           v-for="style in patternStyles"
           :key="style"
           :value="style"
-          :label="style"
+          :label="patterns[style].showName"
         />
       </select>
     </div>
