@@ -57,7 +57,7 @@ import patterns from '../assets/patterns'
 import Instrument from './Instrument.vue'
 
 export default {
-  name: "Sequencer",
+  name: 'Sequencer',
   components: {
     Instrument,
   },
@@ -66,51 +66,52 @@ export default {
       patterns,
       globalPatternStyle: 'samba',
       instruments: [
-        { 
+        {
           name: 'kick',
           showName: 'Kick',
           volume: 1,
-          src: 'kick.wav'
+          src: 'kick.wav',
         },
         {
           name: 'snare',
           showName: 'Snare',
           volume: 1,
-          src: 'snare.wav'
+          src: 'snare.wav',
         },
         {
           name: 'closedHats',
           showName: 'Hihat',
           volume: 1,
-          src: 'hats.wav'
+          src: 'hats.wav',
         },
         {
           name: 'openHats',
           showName: 'Open Hihat',
           volume: 1,
-          src: 'openHats.wav'
+          src: 'openHats.wav',
         },
         {
           name: 'crash',
           showName: 'Crash',
           volume: 1,
-          src: 'crash.wav' },
+          src: 'crash.wav',
+        },
       ],
       tempo: 120,
       beat: -1,
       player: null,
-      isPlaying: false
-    };
+      isPlaying: false,
+    }
   },
   computed: {
     patternStyles() {
       return Object.keys(patterns)
-    }
+    },
   },
   methods: {
     play() {
       if (this.isPlaying) {
-        return;
+        return
       }
       this.isPlaying = true
       this.player = setInterval(() => {
@@ -132,7 +133,7 @@ export default {
   },
   mounted() {
     document.addEventListener('keydown', event => {
-      if(event.keyCode !== 32) {
+      if (event.keyCode !== 32) {
         return
       }
       event.preventDefault()
@@ -142,8 +143,8 @@ export default {
         this.stop()
       }
     })
-  }
-};
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -189,7 +190,7 @@ export default {
   margin-top: 1em;
 }
 
-input[type=number] {
+input[type='number'] {
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
@@ -200,5 +201,4 @@ input[type=number] {
   color: $darkest-grey;
   text-align: center;
 }
-
 </style>

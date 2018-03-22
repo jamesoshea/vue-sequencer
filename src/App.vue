@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import Sequencer from "./components/Sequencer.vue";
+import Sequencer from './components/Sequencer.vue'
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
-    Sequencer
-  }
-};
+    Sequencer,
+  },
+}
 </script>
 
 <style lang="scss">

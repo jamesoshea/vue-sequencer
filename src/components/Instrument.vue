@@ -64,8 +64,8 @@ export default {
   data() {
     return {
       patterns,
-      localVolume : this.volume,
-      selectedStyle: 'samba'
+      localVolume: this.volume,
+      selectedStyle: 'samba',
     }
   },
   computed: {
@@ -74,7 +74,7 @@ export default {
     },
     patternStyles() {
       return Object.keys(this.patterns)
-    }
+    },
   },
   watch: {
     globalPatternStyle(newValue) {
@@ -96,15 +96,15 @@ export default {
   },
   methods: {
     isCurrentBeat(beat) {
-      return this.isPlaying && this.beat === beat 
+      return this.isPlaying && this.beat === beat
     },
     isDownbeat(beat) {
-      return beat % 4 === 0 
+      return beat % 4 === 0
     },
     isChecked(value) {
       return {
-        'instrument__note': true,
-        'instrument__note--checked': value
+        instrument__note: true,
+        'instrument__note--checked': value,
       }
     },
   },
@@ -153,7 +153,7 @@ export default {
     outline: none;
   }
   position: relative;
-  top:50%;
+  top: 50%;
   transform: translateY(-75%);
   appearance: none;
   border: 1px solid $spanish-bistre;
@@ -165,10 +165,10 @@ export default {
   background-color: $spanish-bistre;
 }
 
-input[type=range] {
+input[type='range'] {
   -webkit-appearance: none;
   position: relative;
-  top:50%;
+  top: 50%;
   transform: translateY(-62.5%);
   &:focus {
     outline: none;
@@ -181,9 +181,8 @@ input[type=range] {
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 1em;
-    width:1em;
+    width: 1em;
     background: $spanish-bistre;
   }
 }
-
 </style>

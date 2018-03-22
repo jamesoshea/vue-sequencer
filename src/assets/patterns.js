@@ -18,8 +18,8 @@ const patterns = {
         { beat: 12, value: true },
         { beat: 13, value: false },
         { beat: 14, value: false },
-        { beat: 15, value: true }
-      ]
+        { beat: 15, value: true },
+      ],
     },
     snare: {
       notes: [
@@ -38,8 +38,8 @@ const patterns = {
         { beat: 12, value: true },
         { beat: 13, value: false },
         { beat: 14, value: false },
-        { beat: 15, value: false }
-      ]
+        { beat: 15, value: false },
+      ],
     },
     closedHats: {
       notes: [
@@ -58,8 +58,8 @@ const patterns = {
         { beat: 12, value: true },
         { beat: 13, value: true },
         { beat: 14, value: true },
-        { beat: 15, value: false }
-      ]
+        { beat: 15, value: false },
+      ],
     },
     openHats: {
       notes: [
@@ -78,8 +78,8 @@ const patterns = {
         { beat: 12, value: false },
         { beat: 13, value: false },
         { beat: 14, value: false },
-        { beat: 15, value: false }
-      ]
+        { beat: 15, value: false },
+      ],
     },
     crash: {
       notes: [
@@ -98,9 +98,9 @@ const patterns = {
         { beat: 12, value: false },
         { beat: 13, value: false },
         { beat: 14, value: false },
-        { beat: 15, value: false }
-      ]
-    }
+        { beat: 15, value: false },
+      ],
+    },
   },
   house: {
     showName: 'House',
@@ -121,8 +121,8 @@ const patterns = {
         { beat: 12, value: true },
         { beat: 13, value: false },
         { beat: 14, value: false },
-        { beat: 15, value: false }
-      ]
+        { beat: 15, value: false },
+      ],
     },
     snare: {
       notes: [
@@ -141,8 +141,8 @@ const patterns = {
         { beat: 12, value: true },
         { beat: 13, value: false },
         { beat: 14, value: false },
-        { beat: 15, value: false }
-      ]
+        { beat: 15, value: false },
+      ],
     },
     closedHats: {
       notes: [
@@ -161,8 +161,8 @@ const patterns = {
         { beat: 12, value: false },
         { beat: 13, value: true },
         { beat: 14, value: false },
-        { beat: 15, value: false }
-      ]
+        { beat: 15, value: false },
+      ],
     },
     openHats: {
       notes: [
@@ -181,8 +181,8 @@ const patterns = {
         { beat: 12, value: false },
         { beat: 13, value: false },
         { beat: 14, value: true },
-        { beat: 15, value: false }
-      ]
+        { beat: 15, value: false },
+      ],
     },
     crash: {
       notes: [
@@ -201,9 +201,9 @@ const patterns = {
         { beat: 12, value: false },
         { beat: 13, value: false },
         { beat: 14, value: false },
-        { beat: 15, value: false }
-      ]
-    }
+        { beat: 15, value: false },
+      ],
+    },
   },
   ukGarage: {
     showName: 'UK Garage',
@@ -224,8 +224,8 @@ const patterns = {
         { beat: 12, value: false },
         { beat: 13, value: false },
         { beat: 14, value: true },
-        { beat: 15, value: false }
-      ]
+        { beat: 15, value: false },
+      ],
     },
     snare: {
       notes: [
@@ -244,8 +244,8 @@ const patterns = {
         { beat: 12, value: true },
         { beat: 13, value: false },
         { beat: 14, value: false },
-        { beat: 15, value: false }
-      ]
+        { beat: 15, value: false },
+      ],
     },
     closedHats: {
       notes: [
@@ -264,8 +264,8 @@ const patterns = {
         { beat: 12, value: false },
         { beat: 13, value: false },
         { beat: 14, value: true },
-        { beat: 15, value: false }
-      ]
+        { beat: 15, value: false },
+      ],
     },
     openHats: {
       notes: [
@@ -284,8 +284,8 @@ const patterns = {
         { beat: 12, value: false },
         { beat: 13, value: false },
         { beat: 14, value: false },
-        { beat: 15, value: false }
-      ]
+        { beat: 15, value: false },
+      ],
     },
     crash: {
       notes: [
@@ -304,10 +304,10 @@ const patterns = {
         { beat: 12, value: false },
         { beat: 13, value: false },
         { beat: 14, value: false },
-        { beat: 15, value: false }
-      ]
-    }
-  }
-};
+        { beat: 15, value: false },
+      ],
+    },
+  },
+}
 
-export default patterns;
+export default patterns
