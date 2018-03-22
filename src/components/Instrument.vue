@@ -13,10 +13,18 @@
         step="0.1"
         v-model="localVolume"
       />
+      <select v-model="selectedStyle">
+        <option
+          v-for="style in patternStyles"
+          :key="style"
+          :value="style"
+          :label="style"
+        />
+      </select>
     </div>
     <div class="instrument__beats">
       <div
-        v-for="(note, i) in notes"
+        v-for="(note, i) in patterns[selectedStyle][name].notes"
         :key="note.beat"
         :class="{
           [i]: true,
@@ -26,8 +34,8 @@
       >
         <input
           type="checkbox"
-          v-model="notes[i].value"
-          :class="isChecked(notes[i].value)"
+          v-model="patterns[selectedStyle][name].notes[i].value"
+          :class="isChecked(patterns[selectedStyle][name].notes[i].value)"
         >
       </div>
     </div>
@@ -39,51 +47,59 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      isPlaying: Boolean,
-      beat: Number,
-      src: String,
-      name: String,
-      showName: String,
-      volume: [String, Number],
-      notes: Array,
+import patterns from '../assets/patterns'
+
+export default {
+  props: {
+    isPlaying: Boolean,
+    beat: Number,
+    src: String,
+    name: String,
+    showName: String,
+    volume: [String, Number],
+  },
+  data() {
+    return {
+      patterns,
+      localVolume : this.volume,
+      selectedStyle: 'samba'
+    }
+  },
+  computed: {
+    patternStyles() {
+      return Object.keys(this.patterns)
+    }
+  },
+  watch: {
+    localVolume(newValue) {
+      document.querySelector(`[data-sound="${this.name}"]`).volume = newValue
     },
-    data() {
-      return {
-        localVolume: this.volume,
+    beat(newValue) {
+      if (newValue < 0) {
+        return
+      }
+      if (this.patterns[this.selectedStyle][this.name].notes[newValue].value) {
+        document.querySelector(`[data-sound="${this.name}"]`).pause()
+        document.querySelector(`[data-sound="${this.name}"]`).currentTime = 0
+        document.querySelector(`[data-sound="${this.name}"]`).play()
       }
     },
-    watch: {
-      localVolume(newValue) {
-        document.querySelector(`[data-sound="${this.name}"]`).volume = newValue
-      },
-      beat(newValue) {
-        if (newValue < 0) {
-          return
-        }
-        if (this.notes[newValue].value) {
-          document.querySelector(`[data-sound="${this.name}"]`).pause()
-          document.querySelector(`[data-sound="${this.name}"]`).currentTime = 0
-          document.querySelector(`[data-sound="${this.name}"]`).play()
-        }
-      },
+  },
+  methods: {
+    isCurrentBeat(beat) {
+      return this.isPlaying && this.beat === beat 
     },
-    methods: {
-      isCurrentBeat(beat) {
-        return this.isPlaying && this.beat === beat 
-      },
-      isDownbeat(beat) {
-        return beat % 4 === 0 
-      },
-      isChecked(value) {
-        return {
-          'instrument__note': true,
-          'instrument__note--checked': value
-        }
-      },
+    isDownbeat(beat) {
+      return beat % 4 === 0 
     },
-  }
+    isChecked(value) {
+      return {
+        'instrument__note': true,
+        'instrument__note--checked': value
+      }
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>

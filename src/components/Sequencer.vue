@@ -44,7 +44,6 @@
 
 <script>
 import Instrument from './Instrument.vue'
-import patterns from '../assets/patterns'
 
 export default {
   name: "Sequencer",
@@ -57,42 +56,37 @@ export default {
         { 
           name: 'kick',
           showName: 'Kick',
-          notes: patterns.samba.kick.notes,
           volume: 1,
           src: 'kick.wav'
         },
         {
           name: 'snare',
           showName: 'Snare',
-          notes: patterns.samba.snare.notes,
           volume: 1,
           src: 'snare.wav'
         },
         {
-          name: 'hats',
+          name: 'closedHats',
           showName: 'Hihat',
-          notes: patterns.samba.closedHats.notes,
           volume: 1,
           src: 'hats.wav'
         },
         {
           name: 'openHats',
           showName: 'Open Hihat',
-          notes: patterns.samba.openHats.notes,
           volume: 1,
           src: 'openHats.wav'
         },
         {
           name: 'crash',
           showName: 'Crash',
-          notes: patterns.samba.crash.notes,
           volume: 1,
           src: 'crash.wav' },
       ],
       tempo: 120,
       beat: -1,
       player: null,
-      isPlaying: false,
+      isPlaying: false
     };
   },
   methods: {
