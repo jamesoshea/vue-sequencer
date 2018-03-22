@@ -59,6 +59,7 @@ export default {
     name: String,
     showName: String,
     volume: [String, Number],
+    globalPatternStyle: String,
   },
   data() {
     return {
@@ -76,6 +77,9 @@ export default {
     }
   },
   watch: {
+    globalPatternStyle(newValue) {
+      this.selectedStyle = newValue
+    },
     localVolume(newValue) {
       document.querySelector(`[data-sound="${this.name}"]`).volume = newValue
     },

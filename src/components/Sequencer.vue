@@ -17,6 +17,7 @@
       :name="instrument.name"
       :showName="instrument.showName"
       :volume="instrument.volume"
+      :globalPatternStyle="globalPatternStyle"
     />
     <div class="sequencer__tempo-container">
       <span>How fast?</span>   
@@ -38,10 +39,21 @@
         </button>
       </p>
     </div>
+    <div class="sequencer__global-pattern-style">
+      <select v-model="globalPatternStyle">
+        <option 
+          v-for="patternStyle in patternStyles"
+          :key="patternStyle"
+          :label="patternStyle"
+          :value="patternStyle"
+        />
+      </select>
+    </div>
   </div>
 </template>
 
 <script>
+import patterns from '../assets/patterns'
 import Instrument from './Instrument.vue'
 
 export default {
@@ -51,6 +63,8 @@ export default {
   },
   data() {
     return {
+      patterns,
+      globalPatternStyle: null,
       instruments: [
         { 
           name: 'kick',
@@ -87,6 +101,11 @@ export default {
       player: null,
       isPlaying: false
     };
+  },
+  computed: {
+    patternStyles() {
+      return Object.keys(patterns)
+    }
   },
   methods: {
     play() {
@@ -161,6 +180,11 @@ export default {
 }
 
 .sequencer__transport-container {
+  text-align: center;
+  margin-top: 1em;
+}
+
+.sequencer__global-pattern-style {
   text-align: center;
   margin-top: 1em;
 }
