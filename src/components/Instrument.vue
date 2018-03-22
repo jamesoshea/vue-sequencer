@@ -13,6 +13,8 @@
         step="0.1"
         v-model="localVolume"
       />
+    </div>
+    <div class="instrument__pattern">
       <select v-model="selectedStyle">
         <option
           v-for="style in patternStyles"
@@ -66,6 +68,9 @@ export default {
     }
   },
   computed: {
+    notes() {
+      return this.patterns[this.selectedStyle][this.name].notes
+    },
     patternStyles() {
       return Object.keys(this.patterns)
     }
@@ -78,7 +83,7 @@ export default {
       if (newValue < 0) {
         return
       }
-      if (this.patterns[this.selectedStyle][this.name].notes[newValue].value) {
+      if (this.notes[newValue].value) {
         document.querySelector(`[data-sound="${this.name}"]`).pause()
         document.querySelector(`[data-sound="${this.name}"]`).currentTime = 0
         document.querySelector(`[data-sound="${this.name}"]`).play()
@@ -117,7 +122,11 @@ export default {
 }
 
 .instrument__volume {
-  flex-grow: 1;
+  flex-grow: 0.25;
+}
+
+.instrument__pattern {
+  flex-grow: 0.5;
 }
 
 .instrument__beats {

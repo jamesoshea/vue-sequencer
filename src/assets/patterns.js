@@ -157,8 +157,8 @@ const patterns = {
         { beat: 10, value: false },
         { beat: 11, value: false },
         { beat: 12, value: false },
-        { beat: 13, value: false },
-        { beat: 14, value: true },
+        { beat: 13, value: true },
+        { beat: 14, value: false },
         { beat: 15, value: false }
       ]
     },
