@@ -26,7 +26,7 @@
     </div>
     <div class="instrument__beats">
       <div
-        v-for="(note, i) in patterns[selectedStyle][name].notes"
+        v-for="(note, i) in notes"
         :key="note.beat"
         :class="{
           [i]: true,
@@ -36,8 +36,8 @@
       >
         <input
           type="checkbox"
-          v-model="patterns[selectedStyle][name].notes[i].value"
-          :class="isChecked(patterns[selectedStyle][name].notes[i].value)"
+          v-model="notes[i].value"
+          :class="isChecked(notes[i].value)"
         >
       </div>
     </div>
