@@ -14,7 +14,24 @@ body {
 
 button {
   margin-top: 0.5em;
-  border: solid 1px $darkest-grey;
+  border: solid 1px $spanish-bistre;
   border-radius: 2px;
   background-color: $lightest-grey; 
+}
+
+select {
+  position: relative;
+  top: 50%;
+  transform: translateY(-55%);
+  border: solid 1px $spanish-bistre;
+  background-color: $lightest-grey;
+  color: $darkest-grey;
+  &:focus {
+    outline: none;
+  }
+}
+
+option {
+  background-color: $lightest-grey;
+  color: $darkest-grey;
 }
