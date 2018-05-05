@@ -61,7 +61,7 @@ const patterns = {
         { beat: 15, value: false },
       ],
     },
-    openHats: {
+    plink: {
       notes: [
         { beat: 0, value: false },
         { beat: 1, value: false },
@@ -81,7 +81,7 @@ const patterns = {
         { beat: 15, value: false },
       ],
     },
-    crash: {
+    timbale: {
       notes: [
         { beat: 0, value: true },
         { beat: 1, value: false },
@@ -164,7 +164,7 @@ const patterns = {
         { beat: 15, value: false },
       ],
     },
-    openHats: {
+    plink: {
       notes: [
         { beat: 0, value: false },
         { beat: 1, value: false },
@@ -184,7 +184,7 @@ const patterns = {
         { beat: 15, value: false },
       ],
     },
-    crash: {
+    timbale: {
       notes: [
         { beat: 0, value: true },
         { beat: 1, value: false },
@@ -267,7 +267,7 @@ const patterns = {
         { beat: 15, value: false },
       ],
     },
-    openHats: {
+    plink: {
       notes: [
         { beat: 0, value: false },
         { beat: 1, value: false },
@@ -287,7 +287,7 @@ const patterns = {
         { beat: 15, value: false },
       ],
     },
-    crash: {
+    timbale: {
       notes: [
         { beat: 0, value: false },
         { beat: 1, value: false },
